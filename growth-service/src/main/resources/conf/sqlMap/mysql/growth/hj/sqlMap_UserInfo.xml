@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="USER_INFO">
+
+  <!-- 根据字段删除 -->
+  	<sql id="DELETE_BY_FIELDS">
+    	<![CDATA[
+    	    DELETE FROM USER_INFO WHERE  1=1
+ 				    <#if id ? exists>AND  ID = :id </#if>
+ 				    <#if mobile ? exists>AND  MOBILE = :mobile </#if>
+ 				    <#if password ? exists>AND  PASSWORD = :password </#if>
+ 				    <#if name ? exists>AND  NAME = :name </#if>
+ 				    <#if age ? exists>AND  AGE = :age </#if>
+ 				    <#if sex ? exists>AND  SEX = :sex </#if>
+ 				    <#if school ? exists>AND  SCHOOL = :school </#if>
+ 				    <#if gradeNum ? exists>AND  GRADE_NUM = :gradeNum </#if>
+ 				    <#if classNum ? exists>AND  CLASS_NUM = :classNum </#if>
+ 				    <#if hobby ? exists>AND  HOBBY = :hobby </#if>
+ 				    <#if openid ? exists>AND  OPENID = :openid </#if>
+ 				    <#if strongPoint ? exists>AND  STRONG_POINT = :strongPoint </#if>
+ 				    <#if createTime ? exists>AND  CREATE_TIME = :createTime </#if>
+    	]]>
+	</sql>
+	
+  
+ <!-- 根据字段查询 -->
+<sql id="SELECT_BY_FIELDS">
+    	<![CDATA[
+    	    SELECT *
+FROM USER_INFO WHERE  1=1
+ 		    <#if id ? exists>AND  ID = :id </#if>
+ 		    <#if mobile ? exists>AND  MOBILE = :mobile </#if>
+ 		    <#if password ? exists>AND  PASSWORD = :password </#if>
+ 		    <#if name ? exists>AND  NAME = :name </#if>
+ 		    <#if age ? exists>AND  AGE = :age </#if>
+ 		    <#if sex ? exists>AND  SEX = :sex </#if>
+ 		    <#if school ? exists>AND  SCHOOL = :school </#if>
+ 		    <#if gradeNum ? exists>AND  GRADE_NUM = :gradeNum </#if>
+ 		    <#if classNum ? exists>AND  CLASS_NUM = :classNum </#if>
+ 		    <#if hobby ? exists>AND  HOBBY = :hobby </#if>
+ 		    <#if openid ? exists>AND  OPENID = :openid </#if>
+ 		    <#if strongPoint ? exists>AND  STRONG_POINT = :strongPoint </#if>
+ 		    <#if createTime ? exists>AND  CREATE_TIME = :createTime </#if>
+		<#if orderBy ? exists> ORDER BY ${orderBy} </#if>
+	    <#if orderByDesc ? exists> ${orderByDesc} </#if>
+         <#if startIndex ? exists && maxCount ? exists>
+    	LIMIT :startIndex,:maxCount
+		</#if>
+    	]]>
+	</sql>
+  
+ <!-- 根据字段查询数量 -->
+<sql id="SELECT_COUNT_BY_FIELDS">
+    	<![CDATA[
+    	    SELECT COUNT(1) NUM FROM USER_INFO WHERE  1=1
+ 		    <#if id ? exists>AND  ID = :id </#if>
+ 		    <#if mobile ? exists>AND  MOBILE = :mobile </#if>
+ 		    <#if password ? exists>AND  PASSWORD = :password </#if>
+ 		    <#if name ? exists>AND  NAME = :name </#if>
+ 		    <#if age ? exists>AND  AGE = :age </#if>
+ 		    <#if sex ? exists>AND  SEX = :sex </#if>
+ 		    <#if school ? exists>AND  SCHOOL = :school </#if>
+ 		    <#if gradeNum ? exists>AND  GRADE_NUM = :gradeNum </#if>
+ 		    <#if classNum ? exists>AND  CLASS_NUM = :classNum </#if>
+ 		    <#if hobby ? exists>AND  HOBBY = :hobby </#if>
+ 		    <#if openid ? exists>AND  OPENID = :openid </#if>
+ 		    <#if strongPoint ? exists>AND  STRONG_POINT = :strongPoint </#if>
+ 		    <#if createTime ? exists>AND  CREATE_TIME = :createTime </#if>
+     	<#if groupBy ? exists> GROUP BY ${groupBy} </#if>
+    	]]>
+	</sql>  
+	
+	
+	 <!-- 清除openid -->
+<sql id="CLEAR_OPENID">
+        <![CDATA[
+          UPDATE USER_INFO SET OPENID=null WHERE ID != :userId and OPENID = :openid 
+        ]]>
+    </sql>  
+   
+</sqlMap>

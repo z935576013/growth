@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="STORY_INFO">
+
+  <!-- 根据字段删除 -->
+  	<sql id="DELETE_BY_FIELDS">
+    	<![CDATA[
+    	    DELETE FROM STORY_INFO WHERE  1=1
+ 				    <#if id ? exists>AND  ID = :id </#if>
+ 				    <#if storyType ? exists>AND  STORY_TYPE = :storyType </#if>
+ 				    <#if userId ? exists>AND  USER_ID = :userId </#if>
+ 				    <#if userName ? exists>AND  USER_NAME = :userName </#if>
+ 				    <#if storyTitle ? exists>AND  STORY_TITLE = :storyTitle </#if>
+ 				    <#if coverImgPath ? exists>AND  COVER_IMG_PATH = :coverImgPath </#if>
+ 				    <#if storyContent ? exists>AND  STORY_CONTENT = :storyContent </#if>
+ 				    <#if vedioPath ? exists>AND  VEDIO_PATH = :vedioPath </#if>
+ 				    <#if actStatus ? exists>AND  ACT_STATUS = :actStatus </#if>
+ 				    <#if createTime ? exists>AND  CREATE_TIME = :createTime </#if>
+    	]]>
+	</sql>
+	
+  
+ <!-- 根据字段查询 -->
+<sql id="SELECT_BY_FIELDS">
+    	<![CDATA[
+    	    SELECT *
+FROM STORY_INFO WHERE  1=1
+ 		    <#if id ? exists>AND  ID = :id </#if>
+ 		    <#if storyType ? exists>AND  STORY_TYPE = :storyType </#if>
+ 		    <#if userId ? exists>AND  USER_ID = :userId </#if>
+ 		    <#if userName ? exists>AND  USER_NAME = :userName </#if>
+ 		    <#if storyTitle ? exists>AND  STORY_TITLE = :storyTitle </#if>
+ 		    <#if coverImgPath ? exists>AND  COVER_IMG_PATH = :coverImgPath </#if>
+ 		    <#if storyContent ? exists>AND  STORY_CONTENT = :storyContent </#if>
+ 		    <#if vedioPath ? exists>AND  VEDIO_PATH = :vedioPath </#if>
+ 		    <#if actStatus ? exists>AND  ACT_STATUS = :actStatus </#if>
+ 		    <#if createTime ? exists>AND  CREATE_TIME = :createTime </#if>
+		<#if orderBy ? exists> ORDER BY ${orderBy} </#if>
+	    <#if orderByDesc ? exists> ${orderByDesc} </#if>
+         <#if startIndex ? exists && maxCount ? exists>
+    	LIMIT :startIndex,:maxCount
+		</#if>
+    	]]>
+	</sql>
+  
+ <!-- 根据字段查询数量 -->
+<sql id="SELECT_COUNT_BY_FIELDS">
+    	<![CDATA[
+    	    SELECT COUNT(1) NUM FROM STORY_INFO WHERE  1=1
+ 		    <#if id ? exists>AND  ID = :id </#if>
+ 		    <#if storyType ? exists>AND  STORY_TYPE = :storyType </#if>
+ 		    <#if userId ? exists>AND  USER_ID = :userId </#if>
+ 		    <#if userName ? exists>AND  USER_NAME = :userName </#if>
+ 		    <#if storyTitle ? exists>AND  STORY_TITLE = :storyTitle </#if>
+ 		    <#if coverImgPath ? exists>AND  COVER_IMG_PATH = :coverImgPath </#if>
+ 		    <#if storyContent ? exists>AND  STORY_CONTENT = :storyContent </#if>
+ 		    <#if vedioPath ? exists>AND  VEDIO_PATH = :vedioPath </#if>
+ 		    <#if actStatus ? exists>AND  ACT_STATUS = :actStatus </#if>
+ 		    <#if createTime ? exists>AND  CREATE_TIME = :createTime </#if>
+     	<#if groupBy ? exists> GROUP BY ${groupBy} </#if>
+    	]]>
+	</sql>  
+   
+</sqlMap>

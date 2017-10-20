@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="ACT_JOIN">
+
+  <!-- 根据字段删除 -->
+  	<sql id="DELETE_BY_FIELDS">
+    	<![CDATA[
+    	    DELETE FROM ACT_JOIN WHERE  1=1
+ 				    <#if id ? exists>AND  ID = :id </#if>
+ 				    <#if name ? exists>AND  NAME = :name </#if>
+ 				    <#if age ? exists>AND  AGE = :age </#if>
+ 				    <#if sex ? exists>AND  SEX = :sex </#if>
+ 				    <#if nation ? exists>AND  NATION = :nation </#if>
+ 				    <#if nickname ? exists>AND  NICKNAME = :nickname </#if>
+ 				    <#if fatherPhone ? exists>AND  FATHER_PHONE = :fatherPhone </#if>
+ 				    <#if motherPhone ? exists>AND  MOTHER_PHONE = :motherPhone </#if>
+ 				    <#if school ? exists>AND  SCHOOL = :school </#if>
+ 				    <#if strongPoint ? exists>AND  STRONG_POINT = :strongPoint </#if>
+ 				    <#if perform ? exists>AND  PERFORM = :perform </#if>
+ 				    <#if content1 ? exists>AND  CONTENT1 = :content1 </#if>
+ 				    <#if content3 ? exists>AND  CONTENT3 = :content3 </#if>
+ 				    <#if content2 ? exists>AND  CONTENT2 = :content2 </#if>
+ 				    <#if content4 ? exists>AND  CONTENT4 = :content4 </#if>
+ 				    <#if content5 ? exists>AND  CONTENT5 = :content5 </#if>
+ 				    <#if content6 ? exists>AND  CONTENT6 = :content6 </#if>
+ 				    <#if content7 ? exists>AND  CONTENT7 = :content7 </#if>
+ 				    <#if userId ? exists>AND  USER_ID = :userId </#if>
+ 				    <#if createTime ? exists>AND  CREATE_TIME = :createTime </#if>
+    	]]>
+	</sql>
+	
+  
+ <!-- 根据字段查询 -->
+<sql id="SELECT_BY_FIELDS">
+    	<![CDATA[
+    	    SELECT *
+FROM ACT_JOIN WHERE  1=1
+ 		    <#if id ? exists>AND  ID = :id </#if>
+ 		    <#if name ? exists>AND  NAME = :name </#if>
+ 		    <#if age ? exists>AND  AGE = :age </#if>
+ 		    <#if sex ? exists>AND  SEX = :sex </#if>
+ 		    <#if nation ? exists>AND  NATION = :nation </#if>
+ 		    <#if nickname ? exists>AND  NICKNAME = :nickname </#if>
+ 		    <#if fatherPhone ? exists>AND  FATHER_PHONE = :fatherPhone </#if>
+ 		    <#if motherPhone ? exists>AND  MOTHER_PHONE = :motherPhone </#if>
+ 		    <#if school ? exists>AND  SCHOOL = :school </#if>
+ 		    <#if strongPoint ? exists>AND  STRONG_POINT = :strongPoint </#if>
+ 		    <#if perform ? exists>AND  PERFORM = :perform </#if>
+ 		    <#if content1 ? exists>AND  CONTENT1 = :content1 </#if>
+ 		    <#if content3 ? exists>AND  CONTENT3 = :content3 </#if>
+ 		    <#if content2 ? exists>AND  CONTENT2 = :content2 </#if>
+ 		    <#if content4 ? exists>AND  CONTENT4 = :content4 </#if>
+ 		    <#if content5 ? exists>AND  CONTENT5 = :content5 </#if>
+ 		    <#if content6 ? exists>AND  CONTENT6 = :content6 </#if>
+ 		    <#if content7 ? exists>AND  CONTENT7 = :content7 </#if>
+ 		    <#if userId ? exists>AND  USER_ID = :userId </#if>
+ 		    <#if createTime ? exists>AND  CREATE_TIME = :createTime </#if>
+		<#if orderBy ? exists> ORDER BY ${orderBy} </#if>
+	    <#if orderByDesc ? exists> ${orderByDesc} </#if>
+         <#if startIndex ? exists && maxCount ? exists>
+    	LIMIT :startIndex,:maxCount
+		</#if>
+    	]]>
+	</sql>
+  
+ <!-- 根据字段查询数量 -->
+<sql id="SELECT_COUNT_BY_FIELDS">
+    	<![CDATA[
+    	    SELECT COUNT(1) NUM FROM ACT_JOIN WHERE  1=1
+ 		    <#if id ? exists>AND  ID = :id </#if>
+ 		    <#if name ? exists>AND  NAME = :name </#if>
+ 		    <#if age ? exists>AND  AGE = :age </#if>
+ 		    <#if sex ? exists>AND  SEX = :sex </#if>
+ 		    <#if nation ? exists>AND  NATION = :nation </#if>
+ 		    <#if nickname ? exists>AND  NICKNAME = :nickname </#if>
+ 		    <#if fatherPhone ? exists>AND  FATHER_PHONE = :fatherPhone </#if>
+ 		    <#if motherPhone ? exists>AND  MOTHER_PHONE = :motherPhone </#if>
+ 		    <#if school ? exists>AND  SCHOOL = :school </#if>
+ 		    <#if strongPoint ? exists>AND  STRONG_POINT = :strongPoint </#if>
+ 		    <#if perform ? exists>AND  PERFORM = :perform </#if>
+ 		    <#if content1 ? exists>AND  CONTENT1 = :content1 </#if>
+ 		    <#if content3 ? exists>AND  CONTENT3 = :content3 </#if>
+ 		    <#if content2 ? exists>AND  CONTENT2 = :content2 </#if>
+ 		    <#if content4 ? exists>AND  CONTENT4 = :content4 </#if>
+ 		    <#if content5 ? exists>AND  CONTENT5 = :content5 </#if>
+ 		    <#if content6 ? exists>AND  CONTENT6 = :content6 </#if>
+ 		    <#if content7 ? exists>AND  CONTENT7 = :content7 </#if>
+ 		    <#if userId ? exists>AND  USER_ID = :userId </#if>
+ 		    <#if createTime ? exists>AND  CREATE_TIME = :createTime </#if>
+     	<#if groupBy ? exists> GROUP BY ${groupBy} </#if>
+    	]]>
+	</sql>  
+   
+</sqlMap>

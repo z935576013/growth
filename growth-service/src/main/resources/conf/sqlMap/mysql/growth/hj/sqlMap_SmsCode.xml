@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sqlMap namespace="SMS_CODE">
+
+  <!-- 根据字段删除 -->
+  	<sql id="DELETE_BY_FIELDS">
+    	<![CDATA[
+    	    DELETE FROM SMS_CODE WHERE  1=1
+ 				    <#if id ? exists>AND  ID = :id </#if>
+ 				    <#if mobile ? exists>AND  MOBILE = :mobile </#if>
+ 				    <#if valCode ? exists>AND  VAL_CODE = :valCode </#if>
+ 				    <#if createTime ? exists>AND  CREATE_TIME = :createTime </#if>
+    	]]>
+	</sql>
+	
+  
+ <!-- 根据字段查询 -->
+<sql id="SELECT_BY_FIELDS">
+    	<![CDATA[
+    	    SELECT *
+FROM SMS_CODE WHERE  1=1
+ 		    <#if id ? exists>AND  ID = :id </#if>
+ 		    <#if mobile ? exists>AND  MOBILE = :mobile </#if>
+ 		    <#if valCode ? exists>AND  VAL_CODE = :valCode </#if>
+ 		    <#if createTime ? exists>AND  CREATE_TIME = :createTime </#if>
+		<#if orderBy ? exists> ORDER BY ${orderBy} </#if>
+	    <#if orderByDesc ? exists> ${orderByDesc} </#if>
+         <#if startIndex ? exists && maxCount ? exists>
+    	LIMIT :startIndex,:maxCount
+		</#if>
+    	]]>
+	</sql>
+  
+ <!-- 根据字段查询数量 -->
+<sql id="SELECT_COUNT_BY_FIELDS">
+    	<![CDATA[
+    	    SELECT COUNT(1) NUM FROM SMS_CODE WHERE  1=1
+ 		    <#if id ? exists>AND  ID = :id </#if>
+ 		    <#if mobile ? exists>AND  MOBILE = :mobile </#if>
+ 		    <#if valCode ? exists>AND  VAL_CODE = :valCode </#if>
+ 		    <#if createTime ? exists>AND  CREATE_TIME = :createTime </#if>
+     	<#if groupBy ? exists> GROUP BY ${groupBy} </#if>
+    	]]>
+	</sql>  
+   
+</sqlMap>
